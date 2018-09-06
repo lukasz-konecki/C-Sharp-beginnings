@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text;
-namespace ConsoleApp1
+namespace Averager
 {
     class Averager
     {
