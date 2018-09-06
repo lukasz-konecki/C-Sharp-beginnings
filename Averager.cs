@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Text;
-namespace Averager
+namespace AveragerNamespace
 {
     class Averager
     {
@@ -25,6 +24,7 @@ namespace Averager
             Console.WriteLine("There is no average because you didn't provide any number. Bye.");
             else
             Console.WriteLine("The average is " + (runningTotal/i) + ".");
+            Console.ReadLine();
         }
     }
 }
