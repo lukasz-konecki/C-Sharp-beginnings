@@ -1,0 +1,81 @@
+using System;
+using System.Collections.Generic;
+
+namespace SolvingProblems
+{
+    class Dictionaries
+    {
+        public static Dictionary<string, int> createDictionary(string aminoAcids)
+        {
+            Dictionary<string, int> dictionaryAA = new Dictionary<string, int>();
+            foreach (char c in aminoAcids)
+            {
+                if (dictionaryAA.ContainsKey(c.ToString()))
+                {
+                    dictionaryAA[c.ToString()] += 1;
+                }
+                else
+                {
+                    dictionaryAA.Add(c.ToString(), 1);
+                }
+            }
+            return (dictionaryAA);
+        }
+    }
+    class Program
+    {
+        static void Main()
+        {
+            Console.WriteLine("Please provide the first protein chain");
+            string aminoAcid1 = Console.ReadLine();
+            Dictionary<string, int> dict1 = Dictionaries.createDictionary(aminoAcid1);
+            Console.WriteLine("Please provide the second protein chain");
+            string aminoAcid2 = Console.ReadLine();
+            Dictionary<string, int> dict2 = Dictionaries.createDictionary(aminoAcid2);
+            List<string> list = new List<string>(dict1.Keys);
+            if (dict1.Count != dict2.Count)
+            {
+                Console.WriteLine("The change was not possible due to different numbers of unique amino acids.");
+            }
+            else
+            {
+                int check = 1;
+                foreach (KeyValuePair<string, int> pair in dict1)
+                {
+                    bool condition1 = dict2.ContainsKey(pair.Key) && dict2[pair.Key] == dict1[pair.Key];
+                    if (condition1)
+                    {
+                        check *= 1;
+                    }
+                    else
+                    {
+                        check *= 0;
+                        break;
+                    }
+                }
+                foreach (KeyValuePair<string, int> pair in dict2)
+                {
+                    bool condition2 = dict1.ContainsKey(pair.Key) && dict1[pair.Key] == dict2[pair.Key];
+                    if (condition2)
+                    {
+                        check *= 1;
+                    }
+                    else
+                    {
+                        check *= 0;
+                        break;
+                    }
+                }
+                if (check == 1)
+                {
+                    Console.WriteLine("The change was possible!");
+                }
+                else
+                {
+                    Console.WriteLine("The change was not possible due to different occurencies of amino acids.");
+                }
+            }
+                Console.ReadLine();
+        }
+    }
+}
