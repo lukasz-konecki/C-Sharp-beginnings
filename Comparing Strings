@@ -32,6 +32,9 @@ namespace SolvingProblems
             Console.WriteLine("Please provide the second protein chain");
             string aminoAcid2 = Console.ReadLine();
             Dictionary<string, int> dict2 = Dictionaries.createDictionary(aminoAcid2);
+            
+            //input validation will be added later as it was asked to be omitted in the task
+            
             if (dict1.Count != dict2.Count)
             {
                 Console.WriteLine("The change was not possible due to different numbers of unique amino acids.");
